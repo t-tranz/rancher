@@ -16,6 +16,7 @@ spec:
       containers:
         - name: short-app
           image: antonlarichev/short-app:latest
+          #imagePullPolicy: Always  # Для возможности использовать latest tag (kubectl restart deployment short-app-deployment)
           ports:
             - containerPort: 80
           resources:

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hort-app-ports
+  name: chort-app-ports
 spec:
   selector:
     components: frontend # Привязываем к поду
