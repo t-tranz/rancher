@@ -9,3 +9,8 @@ data:
   {{- else }}
   aymentToken: "false"
   {{- end }}
+  {{- with .Values.value.requirements.limits}}
+  memory: {{ .memory}}
+  cpu: {{ .cpu}}
+  version: {{ $.Values.app.version}} # $. Для перехода к корню 
+  {{- end}}
