@@ -14,3 +14,8 @@ data:
   cpu: {{ .cpu}}
   version: {{ $.Values.app.version}} # $. Для перехода к корню 
   {{- end}}
+  users: 
+    {{- range .Values.users }} # Перебор значений
+    - {{ .name }}: {{ .role}}
+    {{- end}}
+
