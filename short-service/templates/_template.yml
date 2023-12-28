@@ -1,0 +1,4 @@
+{{- define "chart.labels" }}
+data: {{ now | htmlDate }}
+version: {{ .Values.app.version }}
+{{- end}}
