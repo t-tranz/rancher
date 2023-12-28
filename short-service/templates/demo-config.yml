@@ -12,10 +12,12 @@ data:
   {{- with .Values.value.requirements.limits}}
   memory: {{ .memory}}
   cpu: {{ .cpu}}
-  version: {{ $.Values.app.version}} # $. Для перехода к корню 
+  version: {{ $.Values.app.version}}  # $. Для перехода к корню 
   {{- end}}
+  {{- $map := .Release.Name | upper | quote }}
+  map: {{ $map }}
   users: 
-    {{- range .Values.users }} # Перебор значений
-    - {{ .name }}: {{ .role}}
+    {{- range $index, $user := .Values.users }} # Перебор значений
+    - {{ $user.name }}: "{{ $user.role}} - {{ $index }}"
     {{- end}}
 
