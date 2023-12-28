@@ -16,8 +16,7 @@ data:
   {{- end}}
   {{- $map := .Release.Name | upper | quote }}
   map: {{ $map }}
-  users: 
-    {{- range $index, $user := .Values.users }} # Перебор значений
-    - {{ $user.name }}: "{{ $user.role}} - {{ $index }}"
-    {{- end}}
-
+  users: |-
+    {{- range tuple "Maksat" "Vasya" }}
+    - {{ . }}
+    {{- end }}
