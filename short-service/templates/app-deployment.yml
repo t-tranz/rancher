@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.app.name }}-deployment
-  #namespace: my-namespace # для деплоя в нужный namespace
 spec:
   replicas: {{ .Values.app.replicas}}
   selector:
@@ -10,12 +9,12 @@ spec:
       components: {{ .Values.app.components }}
   template:
     metadata:
-      name: short-app
+      name: {{ .Values.app.name }}
       labels:
         components: {{ .Values.app.components }}
     spec:
       containers:
-        - name: short-app
+        - name: {{ .Values.app.name }}
           image: "{{ .Values.app.image }}:{{ .Values.app.version }}"
           ports:
             - containerPort: {{ .Values.app.port }}
