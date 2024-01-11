@@ -9,7 +9,6 @@ spec:
       components: {{ .Values.postgres.components }}
   template:
     metadata:
-      name: {{ .Values.postgres.name }}
       labels:
         components: {{ .Values.postgres.components }}
     spec:
@@ -21,8 +20,8 @@ spec:
           resources:
             limits: {{ .Values.postgres.limits | toYaml | nindent 14 }}
           env:
-            {{- range .Values.postgres.envs  }}
-            {{- $data := dict "name" $.Values.postgres.name  "env" . }}
+            {{- range .Values.postgres.envs }}
+            {{- $data := dict "name" $.Values.postgres.name "env" . }}
             {{- include "env.template" $data | indent 12 }}
             {{- end }}
           volumeMounts:
@@ -33,4 +32,3 @@ spec:
         - name: "{{ .Values.postgres.name }}-data"
           persistentVolumeClaim:
             claimName: "{{ .Values.postgres.name }}-pvc"
-  
